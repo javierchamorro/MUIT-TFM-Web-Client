@@ -18,10 +18,23 @@ export default class MCQuestionChoice extends React.Component {
         quizClassName += " questionC2T";
       }
     }
+
+    let type = "checkbox";
+    switch (this.props.type){
+    case "multiple_choice":
+      type = "checkbox";
+      break;
+    case "one_choice":
+      type = "radio";
+      break;
+    default:
+      type = "checkbox";
+    }
+
     return (
       <div className="question_choice">
         <div className="questionC1">
-          <input type="checkbox" checked={this.props.checked} onChange={() => this.props.handleChange(this.props.choice)} disabled={showCorrection}/>
+          <input type={type} checked={this.props.checked} onChange={() => this.props.handleChange(this.props.choice)} disabled={showCorrection} />
         </div>
         <div className={quizClassName}>
           <div>{this.props.choice.value}</div>

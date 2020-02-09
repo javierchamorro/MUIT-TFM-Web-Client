@@ -1,4 +1,5 @@
 export const quiz_example = {
+  "difficulty":"10",
   "title":"Quiz Example",
   "questions":[
     {
@@ -25,7 +26,7 @@ export const quiz_example = {
       ],
       "difficulty":2,
     }, {
-      "type":"multiple_choice",
+      "type":"one_choice",
       "value":"¿Cuáles de las siguientes afirmaciones son verdaderas?",
       "choices":[
         {
@@ -42,8 +43,8 @@ export const quiz_example = {
           "answer":true,
         }, {
           "id":"4",
-          "value":"Ankara es la capital de Turquía.",
-          "answer":true,
+          "value":"Ankara es la capital de Alemania.",
+          "answer":false,
         },
       ],
       "difficulty":5,

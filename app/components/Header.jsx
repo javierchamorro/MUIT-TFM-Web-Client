@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUser } from 'react-icons/fa';
+import {FaUser} from 'react-icons/fa';
 
 export default class Header extends React.Component {
   constructor(props){
@@ -11,13 +11,13 @@ export default class Header extends React.Component {
 
     if(typeof this.props.tracking.progress_measure === "number"){
       trackingTexts.push(this.props.I18n.getTrans("i.progress_measure") + ": " + (
-      this.props.tracking.progress_measure * 100).toFixed(1) + "%");
+        this.props.tracking.progress_measure * 100).toFixed(1) + "%");
     } else {
       trackingTexts.push(this.props.I18n.getTrans("i.progress_measure") + ": null");
     }
     if(typeof this.props.tracking.score === "number"){
       trackingTexts.push(this.props.I18n.getTrans("i.score") + ": " + (
-      this.props.tracking.score * 100).toFixed(1) + "%");
+        this.props.tracking.score * 100).toFixed(1) + "%");
     } else {
       trackingTexts.push(this.props.I18n.getTrans("i.score") + ": null");
     }

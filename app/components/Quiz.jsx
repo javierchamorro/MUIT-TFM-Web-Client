@@ -80,6 +80,9 @@ export default class Quiz extends React.Component {
     case "multiple_choice":
       currentQuestionRender = (<MCQuestion question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
+    case "one_choice":
+      currentQuestionRender = (<MCQuestion question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      break;
     default:
       currentQuestionRender = "Question type not supported";
     }
@@ -87,7 +90,7 @@ export default class Quiz extends React.Component {
     return (
       <div className="quiz">
         <div className="numeroPregunta">
-        <QuizHeader I18n={this.props.I18n} quiz={this.state.quiz} currentQuestionIndex={this.state.current_question_index}/>
+          <QuizHeader I18n={this.props.I18n} quiz={this.state.quiz} currentQuestionIndex={this.state.current_question_index}/>
         </div>
         {currentQuestionRender}
       </div>

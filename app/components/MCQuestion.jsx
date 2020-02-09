@@ -1,34 +1,43 @@
 import React from 'react';
 
-import { objectiveAccomplished } from './../reducers/actions';
+import {objectiveAccomplished} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
 
 export default class MCQuestion extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      selected_choices_ids: [],
-      answered: false,
+      selected_choices_ids:[],
+      option:"",
+      answered:false,
     };
   }
-  componentWillUpdate(prevProps) {
-    if (prevProps.question !== this.props.question) {
-      this.setState({ selected_choices_ids: [], answered: false });
+  UNSAFE_componentWillUpdate(prevProps){
+    if(prevProps.question !== this.props.question){
+      this.setState({selected_choices_ids:[], answered:false});
     }
   }
-  handleChoiceChange(choice) {
+  handleMultiChoiceChange(choice){
     let newSelectedChoices = Object.assign([], this.state.selected_choices_ids);
     let indexOf = newSelectedChoices.indexOf(choice.id);
-    if (indexOf === -1) {
+    if(indexOf === -1){
       newSelectedChoices.push(choice.id);
     } else {
       newSelectedChoices.splice(indexOf, 1);
     }
-    this.setState({ selected_choices_ids: newSelectedChoices });
+    this.setState({selected_choices_ids:newSelectedChoices});
   }
-  onAnswerQuestion() {
+
+  handleOneChoiceChange(choice){
+    this.setState({option:choice.id - 1});
+  }
+
+  onAnswerQuestion(){
+
+    let scorePercentage;
+
     // Calculate score
     let nChoices = this.props.question.choices.length;
     let correctAnswers = 0;
@@ -36,20 +45,31 @@ export default class MCQuestion extends React.Component {
     // eslint-disable-next-line no-unused-vars
     let blankAnswers = 0;
 
-    for (let i = 0; i < nChoices; i++) {
-      let choice = this.props.question.choices[i];
-      if (this.state.selected_choices_ids.indexOf(choice.id) !== -1) {
-        // Answered choice
-        if (choice.answer === true) {
-          correctAnswers += 1;
+    switch (this.props.question.type){
+    case "multiple_choice":
+      for(let i = 0; i < nChoices; i++){
+        let choice = this.props.question.choices[i];
+        if(this.state.selected_choices_ids.indexOf(choice.id) !== -1){
+          // Answered choice
+          if(choice.answer === true){
+            correctAnswers += 1;
+          } else {
+            incorrectAnswers += 1;
+          }
         } else {
-          incorrectAnswers += 1;
+          blankAnswers += 1;
         }
-      } else {
-        blankAnswers += 1;
       }
+      scorePercentage = Math.max(0, (correctAnswers - incorrectAnswers) / this.props.question.choices.filter(function(c){ return c.answer === true; }).length);
+      break;
+    case "one_choice":
+      if(this.state.option === "" || this.props.question.choices[this.state.option].answer === false){
+        scorePercentage = 0;
+      } else {
+        scorePercentage = 1;
+      }
+      break;
     }
-    let scorePercentage = Math.max(0, (correctAnswers - incorrectAnswers) / this.props.question.choices.filter(function (c) { return c.answer === true; }).length);
 
     // Send data via SCORM
     let objective = this.props.objective;
@@ -57,25 +77,36 @@ export default class MCQuestion extends React.Component {
     // this.props.dispatch(objectiveAccomplishedThunk(objective.id, objective.score * scorePercentage));
 
     // Mark question as answered
-    this.setState({ answered: true });
+    this.setState({answered:true});
   }
-  onResetQuestion() {
-    this.setState({ selected_choices_ids: [], answered: false });
+  onResetQuestion(){
+    this.setState({selected_choices_ids:[], answered:false});
   }
-  onNextQuestion() {
+  onNextQuestion(){
     this.props.onNextQuestion();
   }
-  render() {
+  render(){
     let choices = [];
-    for (let i = 0; i < this.props.question.choices.length; i++) {
-      choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
+    switch (this.props.question.type){
+    case "multiple_choice":
+      for(let i = 0; i < this.props.question.choices.length; i++){
+        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} type={this.props.question.type} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleMultiChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
+      }
+      break;
+    case "one_choice":
+      for(let i = 0; i < this.props.question.choices.length; i++){
+        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} type={this.props.question.type} choice={this.props.question.choices[i]} checked={i === this.state.option} handleChange={this.handleOneChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
+      }
+      break;
+    default:
+      console.log("Error, tipo no identificado");
     }
     return (
       <div className="question">
         <div className="pregunta">
-        <div class="textopregunta">{this.props.question.value}</div>
-        <div class="respuestas">
-          {choices}</div></div>
+          <div className="textopregunta">{this.props.question.value}</div>
+          <div className="respuestas">
+            {choices}</div></div>
         <QuestionButtons I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion} />
       </div>
     );

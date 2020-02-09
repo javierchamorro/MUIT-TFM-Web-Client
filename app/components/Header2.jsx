@@ -7,8 +7,8 @@ export default class Header2 extends React.Component {
     super(props);
   }
   render(){
-/*     let loggedText;
- */    let trackingTexts = [];
+    /*     let loggedText;
+ */ let trackingTexts = [];
 
     if(typeof this.props.tracking.progress_measure === "number"){
       trackingTexts.push(<div className="puntuacion0"><div className="texto0">{this.props.I18n.getTrans("i.progress_measure") + ": "}</div><div className="azul0">{(this.props.tracking.progress_measure * 100).toFixed(1) + "%"}</div></div>);
@@ -26,7 +26,7 @@ export default class Header2 extends React.Component {
       } */
       // if(typeof this.props.user_profile.learner_preference === "object"){
       //   if(typeof this.props.user_profile.learner_preference.difficulty === "number"){
-      trackingTexts.push(<div className="puntuacion2"><div className="texto2">{this.props.I18n.getTrans("i.difficulty") + ": "}</div><div className="azul2">{SAMPLES.difficulty}</div></div>);
+      trackingTexts.push(<div className="puntuacion2"><div className="texto2">{this.props.I18n.getTrans("i.difficulty") + ": "}</div><div className="azul2">{SAMPLES.quiz_example.difficulty}</div></div>);
       //   }
       // }
     }
