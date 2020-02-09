@@ -86,7 +86,9 @@ export default class Quiz extends React.Component {
 
     return (
       <div className="quiz">
+        <div className="numeroPregunta">
         <QuizHeader I18n={this.props.I18n} quiz={this.state.quiz} currentQuestionIndex={this.state.current_question_index}/>
+        </div>
         {currentQuestionRender}
       </div>
     );
