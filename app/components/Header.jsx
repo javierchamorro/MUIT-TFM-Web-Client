@@ -1,4 +1,5 @@
 import React from 'react';
+import {Glyphicon} from 'react-bootstrap';
 
 export default class Header extends React.Component {
   constructor(props){
@@ -31,18 +32,21 @@ export default class Header extends React.Component {
 
     let loggedEl = null;
     if(typeof loggedText === "string"){
-      loggedEl = <p id="logged_user">{loggedText}</p>;
+      loggedEl = <p><Glyphicon glyph="user" />{" " + loggedText}</p>;
     }
-    let trackingEls = trackingTexts.map(function(text, index){
+
+    /* let trackingEls = trackingTexts.map(function(text, index){
       return <span key={index}>{text}</span>;
-    });
+    }); */
 
     return (
       <div className="header_wrapper">
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/agordillo/RESCORM"><img src="assets/images/react_logo.png"/></a>
-        <h1 id="heading">{this.props.I18n.getTrans("i.title")}</h1>
-        <p id="tracking">{trackingEls}</p>
-        {loggedEl}
+        <div className="logo">
+          <p>{this.props.I18n.getTrans("i.title")}</p>
+        </div>
+        <div className="usuario">
+          {loggedEl}
+        </div>
       </div>
     );
   }
