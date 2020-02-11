@@ -34,7 +34,7 @@ export default class MCQuestionChoice extends React.Component {
     return (
       <div className="question_choice">
         <div className="questionC1">
-          <input type={type} checked={this.props.checked} onChange={() => this.props.handleChange(this.props.choice)} disabled={showCorrection} />
+          <input type={type} checked={this.props.checked} onChange={() => this.props.handleChange(this.props.index)} disabled={showCorrection} />
         </div>
         <div className={quizClassName}>
           <div>{this.props.choice.value}</div>

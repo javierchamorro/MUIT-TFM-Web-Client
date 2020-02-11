@@ -4,6 +4,7 @@ import {objectiveAccomplished} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
+import * as SAMPLES from '../config/samples.js';
 
 export default class MCQuestion extends React.Component {
   constructor(props){
@@ -19,19 +20,19 @@ export default class MCQuestion extends React.Component {
       this.setState({selected_choices_ids:[], answered:false});
     }
   }
-  handleMultiChoiceChange(choice){
+  handleMultiChoiceChange(index){
     let newSelectedChoices = Object.assign([], this.state.selected_choices_ids);
-    let indexOf = newSelectedChoices.indexOf(choice.id);
+    let indexOf = newSelectedChoices.indexOf(index);
     if(indexOf === -1){
-      newSelectedChoices.push(choice.id);
+      newSelectedChoices.push(index);
     } else {
       newSelectedChoices.splice(indexOf, 1);
     }
     this.setState({selected_choices_ids:newSelectedChoices});
   }
 
-  handleOneChoiceChange(choice){
-    this.setState({option:choice.id - 1});
+  handleOneChoiceChange(index){
+    this.setState({option:index});
   }
 
   onAnswerQuestion(){
@@ -48,10 +49,9 @@ export default class MCQuestion extends React.Component {
     switch (this.props.question.type){
     case "multiple_choice":
       for(let i = 0; i < nChoices; i++){
-        let choice = this.props.question.choices[i];
-        if(this.state.selected_choices_ids.indexOf(choice.id) !== -1){
+        if(this.state.selected_choices_ids.indexOf(i) !== -1){
           // Answered choice
-          if(choice.answer === true){
+          if(this.props.question.choices[i].answer === true){
             correctAnswers += 1;
           } else {
             incorrectAnswers += 1;
@@ -71,6 +71,8 @@ export default class MCQuestion extends React.Component {
       break;
     }
 
+    SAMPLES.quiz_example.questions[this.props.questionIndex].score = scorePercentage;
+
     // Send data via SCORM
     let objective = this.props.objective;
     this.props.dispatch(objectiveAccomplished(objective.id, objective.score * scorePercentage));
@@ -78,6 +80,9 @@ export default class MCQuestion extends React.Component {
 
     // Mark question as answered
     this.setState({answered:true});
+
+    console.log(SAMPLES);
+
   }
   onResetQuestion(){
     this.setState({selected_choices_ids:[], answered:false});
@@ -90,12 +95,12 @@ export default class MCQuestion extends React.Component {
     switch (this.props.question.type){
     case "multiple_choice":
       for(let i = 0; i < this.props.question.choices.length; i++){
-        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} type={this.props.question.type} choice={this.props.question.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.question.choices[i].id) !== -1} handleChange={this.handleMultiChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
+        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} type={this.props.question.type} choice={this.props.question.choices[i]} index={i} checked={this.state.selected_choices_ids.indexOf(i) !== -1} handleChange={this.handleMultiChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
       }
       break;
     case "one_choice":
       for(let i = 0; i < this.props.question.choices.length; i++){
-        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} type={this.props.question.type} choice={this.props.question.choices[i]} checked={i === this.state.option} handleChange={this.handleOneChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
+        choices.push(<MCQuestionChoice key={"MyQuestion_" + "question_choice_" + i} type={this.props.question.type} choice={this.props.question.choices[i]} index={i} checked={i === this.state.option} handleChange={this.handleOneChoiceChange.bind(this)} questionAnswered={this.state.answered} />);
       }
       break;
     default:

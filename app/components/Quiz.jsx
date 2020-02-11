@@ -67,6 +67,7 @@ export default class Quiz extends React.Component {
     this.setState({current_question_index:1});
     this.props.dispatch(resetObjectives());
   }
+
   render(){
     let currentQuestion = this.state.quiz.questions[this.state.current_question_index - 1];
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.questions.length);
@@ -78,10 +79,10 @@ export default class Quiz extends React.Component {
 
     switch (currentQuestion.type){
     case "multiple_choice":
-      currentQuestionRender = (<MCQuestion question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<MCQuestion question={currentQuestion} questionIndex={this.state.current_question_index - 1} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     case "one_choice":
-      currentQuestionRender = (<MCQuestion question={currentQuestion} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<MCQuestion question={currentQuestion} questionIndex={this.state.current_question_index - 1} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     default:
       currentQuestionRender = "Question type not supported";
