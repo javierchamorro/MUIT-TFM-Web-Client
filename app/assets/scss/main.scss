@@ -232,7 +232,7 @@ div.header_wrapper {
 
 
 //UserInfo
-div.name{
+div.info{
   padding-top: 15px;
   font-weight: 600;
   margin-top: 10px;
@@ -244,10 +244,22 @@ div.name{
   text-align: center;
 }
 
-div.name input{
+div.info input{
   margin-top: 8px;
   width: 400px;
   height: 50px;
   font-size: 25px;
   text-align: center;
+}
+button.answerUserInfo {
+  padding: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
+  margin-right: 16px;
+  color: white;
+  background: #45b0e5;
+  border: 2px solid #45b0e5;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 9px;
 }
