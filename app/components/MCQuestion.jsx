@@ -4,7 +4,7 @@ import {objectiveAccomplished} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
-import * as SAMPLES from '../config/samples.js';
+import * as SAMPLES from '../config/CDAW_test1_clase.js';
 
 export default class MCQuestion extends React.Component {
   constructor(props){
@@ -18,6 +18,7 @@ export default class MCQuestion extends React.Component {
   UNSAFE_componentWillUpdate(prevProps){
     if(prevProps.question !== this.props.question){
       this.setState({selected_choices_ids:[], answered:false});
+      this.setState({option:""});
     }
   }
   handleMultiChoiceChange(index){

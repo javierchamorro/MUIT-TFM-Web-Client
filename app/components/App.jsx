@@ -4,7 +4,7 @@ import './../assets/scss/main.scss';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
 import * as I18n from '../vendors/I18n.js';
-import * as SAMPLES from '../config/samples.js';
+import * as SAMPLES from '../config/CDAW_test1_clase.js';
 
 import SCORM from './SCORM.jsx';
 import Header from './Header.jsx';
@@ -30,7 +30,7 @@ export class App extends React.Component {
   }
 
   render(){
-    let appHeader = (<Header user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n} />);
+    let appHeader = (<Header user_profile={this.props.user_profile} quiz={SAMPLES.quiz_example} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n} />);
     let appHeader2 = "";
     let appContent = "";
     if(this.state.startUp){

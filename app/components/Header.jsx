@@ -39,7 +39,7 @@ export default class Header extends React.Component {
 
     return (<div className="header_wrapper">
       <div className="logo">
-        <p>{this.props.I18n.getTrans("i.title")}</p>
+        <p>{this.props.quiz.title}</p>
       </div>
       <div className="usuario">
         {loggedEl}

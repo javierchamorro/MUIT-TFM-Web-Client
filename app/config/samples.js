@@ -1,6 +1,6 @@
 export const quiz_example = {
   "difficulty":"10",
-  "title":"Quiz Example",
+  "title":"CDAW Test Clase 1",
   "UserName":"",
   "Location":"",
   "Age":0,
