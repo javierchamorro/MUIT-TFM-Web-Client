@@ -82,8 +82,6 @@ export default class MCQuestion extends React.Component {
     // Mark question as answered
     this.setState({answered:true});
 
-    console.log(SAMPLES);
-
   }
   onResetQuestion(){
     this.setState({selected_choices_ids:[], answered:false});
