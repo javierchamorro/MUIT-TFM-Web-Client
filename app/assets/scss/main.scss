@@ -166,7 +166,6 @@ div.header_wrapper {
 .pregunta {
   font-size: 22px;
   margin-top: 0;
-  height: 325px;
   background-color: #ffffff;
   float: left;
   width: 100%;
@@ -198,7 +197,7 @@ div.header_wrapper {
 .botones {
   height: 50px;
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 // #heading {

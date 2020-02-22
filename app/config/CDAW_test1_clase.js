@@ -64,7 +64,7 @@ export const quiz_example = {
           "answer":false,
         },
       ],
-      "difficulty":0,
+      "difficulty":10,
       "score":0,
     }, {
       "type":"one_choice",
