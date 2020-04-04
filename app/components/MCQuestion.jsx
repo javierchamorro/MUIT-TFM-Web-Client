@@ -4,7 +4,6 @@ import {objectiveAccomplished} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
-import * as SAMPLES from '../config/CDAW_test1_clase.js';
 
 export default class MCQuestion extends React.Component {
   constructor(props){
@@ -72,7 +71,7 @@ export default class MCQuestion extends React.Component {
       break;
     }
 
-    SAMPLES.quiz_example.questions[this.props.questionIndex].score = scorePercentage;
+    this.props.quiz.questions[this.props.questionIndex].score = scorePercentage;    
 
     // Send data via SCORM
     let objective = this.props.objective;

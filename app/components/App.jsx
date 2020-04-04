@@ -4,7 +4,7 @@ import './../assets/scss/main.scss';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
 import * as I18n from '../vendors/I18n.js';
-import * as SAMPLES from '../config/CDAW_test1_clase.js';
+import * as SAMPLES from '../config/samples.js';
 
 import SCORM from './SCORM.jsx';
 import Header from './Header.jsx';

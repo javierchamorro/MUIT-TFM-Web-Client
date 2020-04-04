@@ -61,6 +61,13 @@ export default class Quiz extends React.Component {
       this.setState({current_question_index:(this.state.current_question_index + 1)});
     } else {
       this.props.dispatch(finishApp(true));
+
+      var formdata = new FormData();
+      formdata.append('attachment', JSON.stringify(this.state.quiz));
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://192.168.2.230:3000/app/importResults');
+      xhr.send(formdata);
     }
   }
   onResetQuiz(){
@@ -79,10 +86,10 @@ export default class Quiz extends React.Component {
 
     switch (currentQuestion.type){
     case "multiple_choice":
-      currentQuestionRender = (<MCQuestion question={currentQuestion} questionIndex={this.state.current_question_index - 1} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<MCQuestion question={currentQuestion} questionIndex={this.state.current_question_index - 1} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished} quiz={this.props.quiz}/>);
       break;
     case "one_choice":
-      currentQuestionRender = (<MCQuestion question={currentQuestion} questionIndex={this.state.current_question_index - 1} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
+      currentQuestionRender = (<MCQuestion question={currentQuestion} questionIndex={this.state.current_question_index - 1} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} onResetQuiz={onResetQuiz} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished} quiz={this.props.quiz}/>);
       break;
     default:
       currentQuestionRender = "Question type not supported";
