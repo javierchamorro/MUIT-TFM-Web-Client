@@ -29,7 +29,7 @@ export class App extends React.Component {
     }
   }
 
-  render(){
+  render(){    
     let appHeader = (<Header user_profile={this.props.user_profile} quiz={SAMPLES.quiz_example} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n} />);
     let appHeader2 = "";
     let appContent = "";
