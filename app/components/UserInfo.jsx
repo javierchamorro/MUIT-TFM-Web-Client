@@ -89,7 +89,7 @@ export default class UserInfo extends React.Component {
                           <option value="Huesca">Huesca</option>
                           <option value="Islas Baleares">Islas Baleares</option>
                           <option value="Jaen">Jaén</option>
-                          <option value="La Coruña">La Coruña</option>
+                          <option value="La Coruna">La Coruña</option>
                           <option value="La Rioja">La Rioja</option>
                           <option value="Las Palmas">Las Palmas</option>
                           <option value="Leon">León</option>
