@@ -7,6 +7,8 @@ import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
 import QuizHeader from './QuizHeader.jsx';
 import MCQuestion from './MCQuestion.jsx';
 
+import * as ip from '../config/serverIP.js';
+
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
@@ -66,7 +68,7 @@ export default class Quiz extends React.Component {
       formdata.append('attachment', JSON.stringify(this.state.quiz));
 
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://192.168.2.230:3000/app/importResults');
+      xhr.open('POST', 'http://'+ip.ipaddress+'/app/importResults');
       xhr.send(formdata);
     }
   }
@@ -103,5 +105,5 @@ export default class Quiz extends React.Component {
         {currentQuestionRender}
       </div>
     );
-  }
+  } 
 }
