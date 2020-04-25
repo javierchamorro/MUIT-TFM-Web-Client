@@ -1,1 +1,1 @@
-export const ipaddress = "10.10.10.10:8080"
+export const ipaddress = "10.10.10.10:80"
