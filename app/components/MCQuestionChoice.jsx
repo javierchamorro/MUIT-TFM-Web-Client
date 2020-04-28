@@ -5,17 +5,17 @@ export default class MCQuestionChoice extends React.Component {
     super(props);
   }
   render(){
-    let quizClassName = "questionC2";
+    let quizClassName = "questionC2 ml-2 my-auto";
     let showCorrection = (this.props.questionAnswered);
     if(showCorrection){
       if(this.props.checked){
         if(this.props.choice.answer === true){
-          quizClassName += " questionC2T";
+          quizClassName += " questionC2T ml-2 my-auto";
         } else {
-          quizClassName += " questionC2F";
+          quizClassName += " questionC2F ml-2 my-auto";
         }
       } else if(this.props.choice.answer === true){
-        quizClassName += " questionC2T";
+        quizClassName += " questionC2T ml-2 my-auto";
       }
     }
 
@@ -33,12 +33,14 @@ export default class MCQuestionChoice extends React.Component {
 
     return (
       <div className="question_choice">
-        <div className="questionC1">
-          <input type={type} checked={this.props.checked} onChange={() => this.props.handleChange(this.props.index)} disabled={showCorrection} />
-        </div>
-        <div className={quizClassName}>
-          <div>{this.props.choice.value}</div>
-        </div>
+        <ul class="list-group list-group-horizontal">
+          <div className="questionC1 my-auto">
+            <input type={type} checked={this.props.checked} onChange={() => this.props.handleChange(this.props.index)} disabled={showCorrection} />
+          </div>
+          <div className={quizClassName}>
+            <div>{this.props.choice.value}</div>
+          </div>
+        </ul>
       </div>
     );
   }

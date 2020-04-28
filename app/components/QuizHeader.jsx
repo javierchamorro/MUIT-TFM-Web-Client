@@ -6,8 +6,8 @@ export default class QuizHeader extends React.Component {
   }
   render(){
     return (
-      <div className="quizHeader">
-        <div className="info">{this.props.I18n.getTrans("i.quiz_header_title", {current:this.props.currentQuestionIndex, total:this.props.quiz.questions.length})}</div>
+      <div className="quizHeader mb-1">
+        <div className="info my-auto">{this.props.I18n.getTrans("i.quiz_header_title", {current:this.props.currentQuestionIndex, total:this.props.quiz.questions.length})}</div>
       </div>
     );
   }
