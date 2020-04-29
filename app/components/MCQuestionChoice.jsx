@@ -33,7 +33,7 @@ export default class MCQuestionChoice extends React.Component {
 
     return (
       <div className="question_choice">
-        <ul class="list-group list-group-horizontal">
+        <ul className="list-group list-group-horizontal">
           <div className="questionC1 my-auto">
             <input type={type} checked={this.props.checked} onChange={() => this.props.handleChange(this.props.index)} disabled={showCorrection} />
           </div>

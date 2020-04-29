@@ -17,33 +17,31 @@ export class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      startUp: true};
+      startUp:true};
     I18n.init();
   }
 
   onAnswerUserInformation(){
-    if(SAMPLES.quiz_example.UserName==="" || SAMPLES.quiz_example.Age===0 || SAMPLES.quiz_example.Location==="" || SAMPLES.quiz_example.Studies===""){
+    if(SAMPLES.quiz_example.UserName === "" || SAMPLES.quiz_example.Age === 0 || SAMPLES.quiz_example.Location === "" || SAMPLES.quiz_example.Studies === ""){
       console.log("Falta Info");
-    }else{
-      this.setState({startUp: false});
+    } else {
+      this.setState({startUp:false});
     }
   }
 
-  render(){    
+  render(){
     let appHeader = (<Header user_profile={this.props.user_profile} quiz={SAMPLES.quiz_example} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n} />);
     let appHeader2 = "";
     let appContent = "";
     if(this.state.startUp){
       appContent = (<UserInfo I18n={I18n} quiz={SAMPLES.quiz_example} onCompleteInformation={this.onAnswerUserInformation.bind(this)}/>);
-    } else {
-      if((this.props.tracking.finished !== true) || (GLOBAL_CONFIG.finish_screen === false)){
-        appHeader2 = (<Header2 user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n} />);
-        if(this.props.wait_for_user_profile !== true){
-          appContent = (<Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n} />);
-        }
-      } else {
-        appContent = (<FinishScreen dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n} />);
+    } else if((this.props.tracking.finished !== true) || (GLOBAL_CONFIG.finish_screen === false)){
+      appHeader2 = (<Header2 user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n} />);
+      if(this.props.wait_for_user_profile !== true){
+        appContent = (<Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n} />);
       }
+    } else {
+      appContent = (<FinishScreen dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n} />);
     }
 
     return (<div id="container">

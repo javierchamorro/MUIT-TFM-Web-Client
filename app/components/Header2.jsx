@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as SAMPLES from '../config/CDAW_test1_clase.js';
+import * as SAMPLES from '../config/samples.js';
 
 export default class Header2 extends React.Component {
   constructor(props){

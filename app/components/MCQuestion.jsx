@@ -71,7 +71,7 @@ export default class MCQuestion extends React.Component {
       break;
     }
 
-    this.props.quiz.questions[this.props.questionIndex].score = scorePercentage;    
+    this.props.quiz.questions[this.props.questionIndex].score = scorePercentage;
 
     // Send data via SCORM
     let objective = this.props.objective;

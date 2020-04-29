@@ -35,11 +35,12 @@
     ]
   },
   "dependencies": {
+    "babel-preset-react-app": "^3.1.2",
     "cross-env": "5.1.0",
     "fs-extra": "^5.0.0",
     "react": "16.10.2",
-    "react-icons": "3.9.0",
     "react-dom": "^16.10.2",
+    "react-icons": "3.9.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
@@ -51,7 +52,7 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@hot-loader/react-dom": "^16.8.6",
-    "babel-cli": "6.26.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "6.26.3",
     "babel-eslint": "7.2.3",
     "babel-loader": "8.0.6",

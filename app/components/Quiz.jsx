@@ -64,11 +64,11 @@ export default class Quiz extends React.Component {
     } else {
       this.props.dispatch(finishApp(true));
 
-      var formdata = new FormData();
+      let formdata = new FormData();
       formdata.append('attachment', JSON.stringify(this.state.quiz));
 
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://'+ip.ipaddress+'/app/importResults');
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://' + ip.ipaddress + '/app/importResults');
       xhr.send(formdata);
     }
   }
@@ -105,5 +105,5 @@ export default class Quiz extends React.Component {
         {currentQuestionRender}
       </div>
     );
-  } 
+  }
 }

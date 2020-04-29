@@ -36,7 +36,7 @@ export const quiz_example = {
         }, {
           "value":"False",
           "answer":true,
-        }, 
+        },
       ],
       "difficulty":0,
       "score":0,
@@ -79,7 +79,7 @@ export const quiz_example = {
         }, {
           "value":"It was coined by McCarthy",
           "answer":false,
-        }, 
+        },
       ],
       "difficulty":0,
       "score":0,
@@ -96,7 +96,7 @@ export const quiz_example = {
         }, {
           "value":"It was still used today",
           "answer":true,
-        }, 
+        },
       ],
       "difficulty":0,
       "score":0,
@@ -113,11 +113,11 @@ export const quiz_example = {
         }, {
           "value":"is a pre-existing work extended by Turing",
           "answer":false,
-        }, 
+        },
       ],
       "difficulty":0,
       "score":0,
-    },{
+    }, {
       "type":"multiple_choice",
       "value":"Searle's chinese room ...",
       "choices":[
@@ -130,11 +130,11 @@ export const quiz_example = {
         }, {
           "value":"is an example of weak AI",
           "answer":false,
-        }, 
+        },
       ],
       "difficulty":0,
       "score":0,
-    },{
+    }, {
       "type":"multiple_choice",
       "value":"Ashby proposed ... ",
       "choices":[
@@ -187,7 +187,7 @@ export const quiz_example = {
         }, {
           "value":"is a real time-driven strategy of 2nd generation expert systems",
           "answer":false,
-        }, 
+        },
       ],
       "difficulty":0,
       "score":0,
