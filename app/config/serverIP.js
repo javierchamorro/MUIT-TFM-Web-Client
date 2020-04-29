@@ -1,1 +1,1 @@
-export const ipaddress = "10.10.10.10:3000"
+export const ipaddress = "10.10.10.10:3000";

@@ -70,7 +70,7 @@ export default class UserInfo extends React.Component {
             <div className="col-md-4" />
             <div className="input-group col-md-4">
               <select name="studies" className="custom-select" id="inputGroupSelect01" value={this.state.studies} onChange={this.onChangeStudiesText.bind(this)} required>
-                <option value= "">Selecciona Estudios</option>
+                <option value= "">{this.props.I18n.getTrans("i.selectStudies")}</option>
                 <option value="ESO">ESO</option>
                 <option value="Bachillerato">Bachillerato</option>
                 <option value="Grado en Artes y Humanidades">Grado en Artes y Humanidades</option>
@@ -89,7 +89,7 @@ export default class UserInfo extends React.Component {
             <div className="col-md-4" />
             <div className="input-group col-md-4">
               <select name="location" className="custom-select" id="inputGroupSelect01" value={this.state.location} onChange={this.onChangeLocationText.bind(this)} required>
-                <option value="">Selecciona Provincia</option>
+                <option value="">{this.props.I18n.getTrans("i.selectLocation")}</option>
                 <option value="Alava">Álava</option>
                 <option value="Albacete">Albacete</option>
                 <option value="Alicante">Alicante</option>

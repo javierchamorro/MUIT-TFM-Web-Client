@@ -20,6 +20,8 @@ export let LOCALES = {
     "i.age":"Age",
     "i.studies":"Studies",
     "i.location":"Residence place",
+    "i.selectStudies": "Select Studies",
+    "i.selectLocation": "Select Location",
   },
   es:{
     "i.answer":"Responder",
@@ -41,5 +43,7 @@ export let LOCALES = {
     "i.age":"Edad",
     "i.studies":"Estudios",
     "i.location":"Lugar de residencia",
+    "i.selectStudies": "Selecciona estudios",
+    "i.selectLocation": "Selecciona ubicación",
   },
 };
