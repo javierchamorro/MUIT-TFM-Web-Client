@@ -1,1 +1,0 @@
-export const ipaddress = "10.10.10.10:3000"

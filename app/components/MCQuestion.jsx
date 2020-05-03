@@ -4,6 +4,9 @@ import {objectiveAccomplished} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
+import Temporizador from './Temporizador.jsx';
+
+import * as info from '../config/info.js';
 
 export default class MCQuestion extends React.Component {
   constructor(props){
@@ -81,6 +84,10 @@ export default class MCQuestion extends React.Component {
     // Mark question as answered
     this.setState({answered:true});
 
+    if (info.timer) {
+      this.refs.contador.componentWillUnmount();
+    }
+
   }
   onResetQuestion(){
     this.setState({selected_choices_ids:[], answered:false});
@@ -104,12 +111,19 @@ export default class MCQuestion extends React.Component {
     default:
       console.log("Error, tipo no identificado");
     }
+    let timer = [];
+    if(info.timer){
+      timer.push(<Temporizador ref="contador" key={this.props.question.value} onAnswerQuiz={this.onAnswerQuestion.bind(this)}/>);
+    }
     return (
       <div className="question">
         <div className="pregunta">
           <div className="textopregunta">{this.props.question.value}</div>
           <div className="respuestas">
-            {choices}</div></div>
+            {choices}
+          </div>
+            {timer}
+          </div>
         <QuestionButtons I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion} />
       </div>
     );

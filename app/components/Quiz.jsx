@@ -7,7 +7,7 @@ import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
 import QuizHeader from './QuizHeader.jsx';
 import MCQuestion from './MCQuestion.jsx';
 
-import * as ip from '../config/serverIP.js';
+import * as info from '../config/info.js';
 
 export default class Quiz extends React.Component {
   constructor(props){
@@ -68,7 +68,7 @@ export default class Quiz extends React.Component {
       formdata.append('attachment', JSON.stringify(this.state.quiz));
 
       let xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://' + ip.ipaddress + '/app/importResults');
+      xhr.open('POST', 'http://' + info.ipaddress + '/app/importResults');
       xhr.send(formdata);
     }
   }

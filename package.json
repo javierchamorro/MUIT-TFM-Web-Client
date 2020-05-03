@@ -39,6 +39,7 @@
     "cross-env": "5.1.0",
     "fs-extra": "^5.0.0",
     "react": "16.10.2",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.10.2",
     "react-icons": "3.9.0",
     "react-redux": "^5.0.6",

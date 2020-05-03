@@ -188,17 +188,21 @@ div.header_wrapper {
 }
 
 .progressBar {
+  margin-top: 15px;
   margin-right: 10%;
   margin-left: 10%;
   width: 80%;
-  position: absolute;
-  bottom: 70px;
+  position: relative;
+  margin-bottom: 15px;
 }
+
+.progress-bar{
+  background-color: #36b3ed;
+} 
 
 .botones {
   height: 50px;
   width: 100%;
-  position: relative;
   bottom: 0;
 }
 // #heading {
